@@ -6,6 +6,7 @@ public class PlayerMotor : MonoBehaviour
 {
     public float moveSpeed = 2;
     public float rotateSpeed = 10;
+    public Transform playerCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -16,35 +17,45 @@ public class PlayerMotor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W))
         {
-            transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S))
         {
-            transform.position += Vector3.back * moveSpeed * Time.deltaTime;
+            transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
-            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
-            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y + 1 * rotateSpeed * Time.deltaTime, transform.rotation.z, transform.rotation.w);
+            transform.Rotate(Vector3.down * rotateSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.RightArrow))
         {
-            transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y - 1 * rotateSpeed * Time.deltaTime, transform.rotation.z, transform.rotation.w);
+            transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
         }
-        
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            playerCamera.Rotate(Vector3.left * rotateSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            playerCamera.Rotate(Vector3.right * rotateSpeed * Time.deltaTime);
+        }
+
     }
 }
