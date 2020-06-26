@@ -17,12 +17,12 @@ public class RotateBook : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            transform.eulerAngles += Vector3.back * Time.deltaTime * moveSpeed;
+            transform.eulerAngles += new Vector3(0, 0, -1.0F) * Time.deltaTime * moveSpeed;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.eulerAngles += Vector3.forward * Time.deltaTime * moveSpeed;
+            transform.eulerAngles += new Vector3(0, 0, 1.0F) * Time.deltaTime * moveSpeed;
         }
 
         if (Input.GetKey(KeyCode.W))
