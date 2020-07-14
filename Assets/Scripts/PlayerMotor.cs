@@ -49,12 +49,18 @@ public class PlayerMotor : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            playerCamera.Rotate(Vector3.left * rotateSpeed * Time.deltaTime);
+            if (playerCamera != null)
+            {
+                playerCamera.Rotate(Vector3.left * rotateSpeed * Time.deltaTime);
+            }
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            playerCamera.Rotate(Vector3.right * rotateSpeed * Time.deltaTime);
+            if (playerCamera != null)
+            {
+                playerCamera.Rotate(Vector3.right * rotateSpeed * Time.deltaTime);
+            }
         }
 
     }
